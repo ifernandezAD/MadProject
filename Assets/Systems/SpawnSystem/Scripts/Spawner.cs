@@ -6,7 +6,7 @@ public class Spawner : MonoBehaviour
 {   
     [Header("References")]
     [SerializeField] Terrain terrain; 
-    [SerializeField] GameObject resourcePrefab; 
+    [SerializeField] GameObject[] resourcePrefabs; 
     [SerializeField] GameObject spawnerContainer; 
 
     [Header("Variables")]
@@ -35,6 +35,10 @@ public class Spawner : MonoBehaviour
     {
         Vector3 spawnPosition = GetValidRandomPositionOnTerrain();
         spawnPosition.y += spawnYOffset;
+
+        int randomIndex = Random.Range(0, resourcePrefabs.Length);
+        GameObject resourcePrefab = resourcePrefabs[randomIndex];
+        
         GameObject resource = Instantiate(resourcePrefab, spawnPosition, Quaternion.identity);
         resource.transform.parent = spawnerContainer.transform; 
     }

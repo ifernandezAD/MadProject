@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Transform resourcesContainer; 
 
     [Header("Resource Related")]
+    [SerializeField] GameObject[] storageResourcePrefabs;
     [SerializeField] int resourceCount = 0;
     [SerializeField] int victoryResourceCount = 10;
 
@@ -21,9 +22,15 @@ public class GameManager : MonoBehaviour
         WorkerAnt.onResourceCollected += IncrementResourceCount;
     }
 
-        void IncrementResourceCount()
+    void IncrementResourceCount()
     {
         resourceCount++;
+
+        int randomIndex = Random.Range(0, storageResourcePrefabs.Length);
+        GameObject resourcePrefab = storageResourcePrefabs[randomIndex];
+
+        Instantiate(resourcePrefab, storageArea);
+
         if (resourceCount >= victoryResourceCount)
         {
             WinGame();
