@@ -5,37 +5,28 @@ using UnityEngine.AI;
 
 public class WorkerAnt : MonoBehaviour
 {
-    Transform storageArea; 
-    Transform resourcesContainer; 
-    private GameObject targetResource; 
+    Transform storageArea;
+    Transform resourcesContainer;
+    [SerializeField] private GameObject targetResource;
     private NavMeshAgent agent;
 
     void Awake()
     {
         storageArea = GameManager.instance.storageArea;
         resourcesContainer = GameManager.instance.resourcesContainer;
-    }
-
-    void Start()
-    {
         agent = GetComponent<NavMeshAgent>();
-        FindNewResource();
     }
 
     void Update()
     {
+        if (targetResource == null)
+        {
+            FindNewResource();
+        }
+
         if (targetResource != null)
         {
-            if (Vector3.Distance(transform.position, targetResource.transform.position) < 1.0f)
-            {
-                agent.SetDestination(storageArea.position);
-            }
-
-            if (Vector3.Distance(transform.position, storageArea.position) < 1.0f)
-            {
-                Destroy(targetResource);
-                FindNewResource();
-            }
+            agent.SetDestination(targetResource.transform.position);
         }
     }
 
@@ -48,7 +39,22 @@ public class WorkerAnt : MonoBehaviour
             {
                 int randomIndex = Random.Range(0, childCount);
                 targetResource = resourcesContainer.GetChild(randomIndex).gameObject;
-                agent.SetDestination(targetResource.transform.position);
+            }
+            else
+            {
+                agent.SetDestination(transform.position);
+            }
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Resource"))
+        {
+            if (targetResource != null && other.gameObject == targetResource)
+            {
+                Destroy(targetResource);
+                targetResource = null;  
             }
         }
     }
