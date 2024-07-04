@@ -11,8 +11,28 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Transform storageArea; 
     [SerializeField] public Transform resourcesContainer; 
 
+    [Header("Resource Related")]
+    [SerializeField] int resourceCount = 0;
+    [SerializeField] int victoryResourceCount = 10;
+
     void Awake()
     {
         instance = this;
+        WorkerAnt.onResourceCollected += IncrementResourceCount;
+    }
+
+        void IncrementResourceCount()
+    {
+        resourceCount++;
+        if (resourceCount >= victoryResourceCount)
+        {
+            WinGame();
+        }
+    }
+
+    void WinGame()
+    {
+        Debug.Log("Victory! You've collected enough resources.");
+        // Aquí va la pantalla/mensaje de victoria. Se me ocurre que las hormigas bailen o salten, cartel de victoria y boton de replay. 
     }
 }

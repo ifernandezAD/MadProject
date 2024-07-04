@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,9 @@ using UnityEngine.AI;
 
 public class WorkerAnt : MonoBehaviour
 {
+
+    public static Action onResourceCollected;
+
     [SerializeField] private GameObject targetResource;
     private Transform storageArea;
     Transform resourcesContainer;
@@ -54,7 +58,7 @@ public class WorkerAnt : MonoBehaviour
             int childCount = resourcesContainer.childCount;
             if (childCount > 0)
             {
-                int randomIndex = Random.Range(0, childCount);
+                int randomIndex = UnityEngine.Random.Range(0, childCount);
                 targetResource = resourcesContainer.GetChild(randomIndex).gameObject;
             }
             else
@@ -70,6 +74,7 @@ public class WorkerAnt : MonoBehaviour
         {
             if (targetResource != null && other.gameObject == targetResource)
             {
+                onResourceCollected?.Invoke();
                 Destroy(targetResource);
                 targetResource = null;  
             }
