@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DefaultExecutionOrder(-100)]
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static GameManager instance { get; private set; }
 
-    // Update is called once per frame
-    void Update()
+    [Header("References")]
+    [SerializeField] public Transform storageArea; 
+    [SerializeField] public Transform resourcesContainer; 
+
+    void Awake()
     {
-        
+        instance = this;
     }
 }

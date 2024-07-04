@@ -14,9 +14,9 @@ public class Spawner : MonoBehaviour
     [SerializeField] float spawnYOffset = 0.5f;
 
     [Header("Restricted Areas")]
-    [SerializeField] Transform storageAreaTransform; // Transform for the storage area
+    [SerializeField] Transform storageAreaTransform; 
     [SerializeField] float storageAreaRadius;
-    [SerializeField] Transform queenAreaTransform; // Transform for the queen's area
+    [SerializeField] Transform queenAreaTransform; 
     [SerializeField] float queenAreaRadius;
 
     [Header("Testing")]
