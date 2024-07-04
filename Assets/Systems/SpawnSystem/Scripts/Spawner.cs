@@ -13,6 +13,12 @@ public class Spawner : MonoBehaviour
     [SerializeField] float maxSpawnHeight = 10f; 
     [SerializeField] float spawnYOffset = 0.5f;
 
+    [Header("Restricted Areas")]
+    [SerializeField] Transform storageAreaTransform; // Transform for the storage area
+    [SerializeField] float storageAreaRadius;
+    [SerializeField] Transform queenAreaTransform; // Transform for the queen's area
+    [SerializeField] float queenAreaRadius;
+
     [Header("Testing")]
     [SerializeField] bool testingSpawnResource;
 
@@ -43,11 +49,19 @@ public class Spawner : MonoBehaviour
             float randomX = Random.Range(0, terrainWidth);
             float randomZ = Random.Range(0, terrainLength);
             float terrainHeight = terrain.SampleHeight(new Vector3(randomX, 0, randomZ));
-            
-            if (terrainHeight <= maxSpawnHeight)
+            Vector3 spawnPosition = new Vector3(randomX, terrainHeight, randomZ);
+
+            if (terrainHeight <= maxSpawnHeight &&
+                !IsInRestrictedArea(spawnPosition, storageAreaTransform.position, storageAreaRadius) &&
+                !IsInRestrictedArea(spawnPosition, queenAreaTransform.position, queenAreaRadius))
             {
-                return new Vector3(randomX, terrainHeight, randomZ);
+                return spawnPosition;
             }
         }
+    }
+
+    bool IsInRestrictedArea(Vector3 position, Vector3 areaCenter, float areaRadius)
+    {
+        return Vector3.Distance(position, areaCenter) <= areaRadius;
     }
 }
