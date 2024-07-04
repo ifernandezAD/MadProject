@@ -1224,7 +1224,7 @@ GameObject:
   - component: {fileID: 5308051045310798474}
   - component: {fileID: 2184745271687917365}
   - component: {fileID: 4118489678617030249}
-  - component: {fileID: 5865068020929634516}
+  - component: {fileID: 7565017915160089424}
   m_Layer: 6
   m_Name: Queen
   m_TagString: Untagged
@@ -1290,33 +1290,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 153.06868, y: 64.50415, z: 127.81207}
   m_Center: {x: 0.2661068, y: 31.752075, z: -21.293571}
---- !u!54 &5865068020929634516
-Rigidbody:
+--- !u!114 &7565017915160089424
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7132536966975180517}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc60095b1c2d424a8ea88244ae4660d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartEffectPrefab: {fileID: 0}
+  accelerationFactor: 0.9
+  acceleratedGenerationInterval: 5
+  accelerationDuration: 5
 --- !u!1 &7645148363993045144
 GameObject:
   m_ObjectHideFlags: 0

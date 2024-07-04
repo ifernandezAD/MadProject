@@ -207,7 +207,7 @@ PrefabInstance:
     - target: {fileID: 5308051045310798474, guid: bd78947ad21e2cb4ab5ef509b776908e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000076293945
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5308051045310798474, guid: bd78947ad21e2cb4ab5ef509b776908e,
         type: 3}
@@ -232,7 +232,7 @@ PrefabInstance:
     - target: {fileID: 5308051045310798474, guid: bd78947ad21e2cb4ab5ef509b776908e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5308051045310798474, guid: bd78947ad21e2cb4ab5ef509b776908e,
         type: 3}
@@ -254,8 +254,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Queen
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5865068020929634516, guid: bd78947ad21e2cb4ab5ef509b776908e, type: 3}
+    - target: {fileID: 7565017915160089424, guid: bd78947ad21e2cb4ab5ef509b776908e,
+        type: 3}
+      propertyPath: heartEffectPrefab
+      value: 
+      objectReference: {fileID: 5531743186368104068, guid: d7c8d51f50c01ab43891c135dacf139f,
+        type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
