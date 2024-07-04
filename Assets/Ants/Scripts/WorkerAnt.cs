@@ -5,16 +5,19 @@ using UnityEngine.AI;
 
 public class WorkerAnt : MonoBehaviour
 {
-    Transform storageArea;
-    Transform resourcesContainer;
     [SerializeField] private GameObject targetResource;
+    private Transform storageArea;
+    Transform resourcesContainer;
     private NavMeshAgent agent;
+    private Animator animator;
+
 
     void Awake()
     {
         storageArea = GameManager.instance.storageArea;
         resourcesContainer = GameManager.instance.resourcesContainer;
         agent = GetComponent<NavMeshAgent>();
+        animator=GetComponent<Animator>();
     }
 
     void Update()
@@ -27,6 +30,20 @@ public class WorkerAnt : MonoBehaviour
         if (targetResource != null)
         {
             agent.SetDestination(targetResource.transform.position);
+        }
+
+        UpdateAnimation();
+    }
+
+    void UpdateAnimation()
+    {
+       if (agent.velocity.magnitude > 0.1f)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
         }
     }
 
