@@ -3,9 +3,9 @@ using UnityEngine;
 public class QueenController : MonoBehaviour
 {
     [Header("Spawn")]
-    [SerializeField] GameObject eggPrefab; 
-    [SerializeField] Transform spawnAreaCenter; 
-    [SerializeField] float spawnAreaRadius = 150f; 
+    [SerializeField] GameObject eggPrefab;
+    [SerializeField] Transform spawnAreaCenter;
+    [SerializeField] float spawnAreaRadius = 150f;
 
     [Header("Breeding")]
     [SerializeField] GameObject heartEffectPrefab;
@@ -15,9 +15,9 @@ public class QueenController : MonoBehaviour
 
     void OnValidate()
     {
-        if(testingEggSpawn)
+        if (testingEggSpawn)
         {
-            SpawnEgg();
+            TrySpawnEgg();
             testingEggSpawn = false;
         }
     }
@@ -25,13 +25,22 @@ public class QueenController : MonoBehaviour
     void OnMouseDown()
     {
         ShowHeartEffect();
-        SpawnEgg();
+        TrySpawnEgg();
     }
 
     void ShowHeartEffect()
     {
         GameObject heartEffect = Instantiate(heartEffectPrefab, transform.position, Quaternion.identity);
-        Destroy(heartEffect, 1.0f); 
+        Destroy(heartEffect, 1.0f);
+    }
+
+    void TrySpawnEgg()
+    {
+        float spawnProbability = GetSpawnProbability();
+        if (Random.value <= spawnProbability)
+        {
+            SpawnEgg();
+        }
     }
 
     void SpawnEgg()
@@ -61,12 +70,32 @@ public class QueenController : MonoBehaviour
                 return spawnPosition;
             }
         }
-        return Vector3.zero; 
+        return Vector3.zero;
     }
 
     bool IsInQueenCollider(Vector3 position)
     {
         Collider queenCollider = GetComponent<Collider>();
         return queenCollider.bounds.Contains(position);
+    }
+
+    float GetSpawnProbability()
+    {
+        GamePhase currentPhase = GameManager.instance.GetCurrentPhase();
+        switch (currentPhase)
+        {
+            case GamePhase.Phase1:
+                return 0.05f;  
+            case GamePhase.Phase2:
+                return 0.1f; 
+            case GamePhase.Phase3:
+                return 0.2f; 
+            case GamePhase.Phase4:
+                return 0.4f; 
+            case GamePhase.Phase5:
+                return 0.5f; 
+            default:
+                return 0.0f;
+        }
     }
 }

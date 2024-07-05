@@ -145,4 +145,9 @@ public class GameManager : MonoBehaviour
             Spawner.instance.SpawnResource();
         }
     }
+
+        public GamePhase GetCurrentPhase()
+    {
+        return currentPhase;
+    }
 }
