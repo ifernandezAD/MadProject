@@ -8,7 +8,14 @@ public class EggHatchOnClick : MonoBehaviour
     [SerializeField] private ParticleSystem _particleSystem;
     [SerializeField] GameObject antPrefab;
 
+    private Transform workAntsContainer;
+
     private bool isDestroyed = false; 
+
+    void Awake()
+    {
+        workAntsContainer = GameManager.instance.workAntsContainer;
+    }
 
     void OnMouseDown()
     {
@@ -47,7 +54,8 @@ public class EggHatchOnClick : MonoBehaviour
     {
         if (antPrefab != null)
         {
-            Instantiate(antPrefab, transform.position, Quaternion.identity);
+            GameObject ant = Instantiate(antPrefab, transform.position, Quaternion.identity);
+            ant.transform.SetParent(workAntsContainer);
         }
     }
 }

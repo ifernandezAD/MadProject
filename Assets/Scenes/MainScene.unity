@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &306445272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 306445273}
+  m_Layer: 0
+  m_Name: WorkAntsContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &306445273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306445272}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 368.81735, y: 31.942259, z: 216.20183}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &335579323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1699,7 +1730,17 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 739155953233420944, guid: 02764d2093a9f554a87be696acb6fd96,
         type: 3}
+      propertyPath: workAntsContainer
+      value: 
+      objectReference: {fileID: 306445273}
+    - target: {fileID: 739155953233420944, guid: 02764d2093a9f554a87be696acb6fd96,
+        type: 3}
       propertyPath: zombieAntContainer
+      value: 
+      objectReference: {fileID: 1710567529}
+    - target: {fileID: 739155953233420944, guid: 02764d2093a9f554a87be696acb6fd96,
+        type: 3}
+      propertyPath: zombiesAntContainer
       value: 
       objectReference: {fileID: 1710567529}
     - target: {fileID: 4209655367351321693, guid: 02764d2093a9f554a87be696acb6fd96,
@@ -1785,4 +1826,5 @@ SceneRoots:
   - {fileID: 7166940633238891653}
   - {fileID: 1232267139}
   - {fileID: 1402510228}
+  - {fileID: 306445273}
   - {fileID: 1710567529}

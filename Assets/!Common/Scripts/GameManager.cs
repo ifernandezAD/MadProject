@@ -19,8 +19,8 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     [SerializeField] public Transform storageArea;
     [SerializeField] public Transform resourcesContainer;
-
-    [SerializeField] public Transform zombieAntContainer;
+    [SerializeField] public Transform workAntsContainer;
+    [SerializeField] public Transform zombiesAntContainer;
 
     [Header("Resource Related")]
     [SerializeField] GameObject[] storageResourcePrefabs;

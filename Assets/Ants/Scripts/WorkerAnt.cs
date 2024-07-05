@@ -20,7 +20,7 @@ public class WorkerAnt : MonoBehaviour
     {
         storageArea = GameManager.instance.storageArea;
         resourcesContainer = GameManager.instance.resourcesContainer;
-        zombieAntContainer = GameManager.instance.zombieAntContainer;
+        zombieAntContainer = GameManager.instance.zombiesAntContainer;
 
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
