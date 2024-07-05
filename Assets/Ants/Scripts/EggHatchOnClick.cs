@@ -40,6 +40,7 @@ public class EggHatchOnClick : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Destroy(_damaged);
         InstantiateAnt();
+        Destroy(gameObject);
     }
 
     void InstantiateAnt()

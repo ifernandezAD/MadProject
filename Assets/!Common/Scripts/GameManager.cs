@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Transform storageArea;
     [SerializeField] public Transform resourcesContainer;
 
+    [SerializeField] public Transform zombieAntContainer;
+
     [Header("Resource Related")]
     [SerializeField] GameObject[] storageResourcePrefabs;
     [SerializeField] int resourceCount = 0;

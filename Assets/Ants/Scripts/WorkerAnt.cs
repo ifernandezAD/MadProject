@@ -1,25 +1,27 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class WorkerAnt : MonoBehaviour
 {
-
     public static Action onResourceCollected;
 
     [SerializeField] private GameObject targetResource;
     private Transform storageArea;
-    Transform resourcesContainer;
+    private Transform resourcesContainer;
     private NavMeshAgent agent;
     private Animator animator;
 
+    [Header("Zombie Ant")]
+    [SerializeField] private GameObject zombieAntPrefab; 
+     private Transform zombieAntContainer; 
 
     void Awake()
     {
         storageArea = GameManager.instance.storageArea;
         resourcesContainer = GameManager.instance.resourcesContainer;
+        zombieAntContainer = GameManager.instance.zombieAntContainer;
+
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
     }
@@ -41,30 +43,19 @@ public class WorkerAnt : MonoBehaviour
 
     void UpdateAnimation()
     {
-        if (agent.velocity.magnitude > 0.1f)
-        {
-            animator.SetBool("isWalking", true);
-        }
-        else
-        {
-            animator.SetBool("isWalking", false);
-        }
+        animator.SetBool("isWalking", agent.velocity.magnitude > 0.1f);
     }
 
     void FindNewResource()
     {
-        if (resourcesContainer != null)
+        if (resourcesContainer != null && resourcesContainer.childCount > 0)
         {
-            int childCount = resourcesContainer.childCount;
-            if (childCount > 0)
-            {
-                int randomIndex = UnityEngine.Random.Range(0, childCount);
-                targetResource = resourcesContainer.GetChild(randomIndex).gameObject;
-            }
-            else
-            {
-                agent.SetDestination(transform.position);
-            }
+            int randomIndex = UnityEngine.Random.Range(0, resourcesContainer.childCount);
+            targetResource = resourcesContainer.GetChild(randomIndex).gameObject;
+        }
+        else
+        {
+            agent.SetDestination(transform.position);
         }
     }
 
@@ -74,9 +65,7 @@ public class WorkerAnt : MonoBehaviour
         {
             if (targetResource != null && other.gameObject == targetResource)
             {
-                onResourceCollected?.Invoke();
-                Destroy(targetResource);
-                targetResource = null;
+                CollectResource();
             }
         }
 
@@ -84,10 +73,28 @@ public class WorkerAnt : MonoBehaviour
         {
             if (targetResource != null && other.gameObject == targetResource)
             {
-                Debug.Log("Has cogido la seta chunga");
-                Destroy(targetResource);
-                targetResource = null;
+                ConvertToZombieAnt();
             }
+        }
+    }
+
+    void CollectResource()
+    {
+        onResourceCollected?.Invoke();
+        Destroy(targetResource);
+        targetResource = null;
+    }
+
+    void ConvertToZombieAnt()
+    {
+        Destroy(targetResource);
+        Destroy(gameObject);
+
+        GameObject zombieAnt = Instantiate(zombieAntPrefab, transform.position, Quaternion.identity);
+        
+        if (zombieAntContainer != null)
+        {
+            zombieAnt.transform.parent = zombieAntContainer;
         }
     }
 }
