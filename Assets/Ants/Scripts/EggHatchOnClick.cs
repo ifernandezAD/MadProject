@@ -8,15 +8,21 @@ public class EggHatchOnClick : MonoBehaviour
     [SerializeField] private ParticleSystem _particleSystem;
     [SerializeField] GameObject antPrefab;
 
+    private bool isDestroyed = false; 
+
     void OnMouseDown()
     {
-        DestroyEgg();
+        if (!isDestroyed)
+        {
+            DestroyEgg();
+        }
     }
 
     public void Clear()
     {
         _full.SetActive(true);
         _damaged.SetActive(false);
+        isDestroyed = false; 
     }
 
     public void DestroyEgg()
@@ -24,6 +30,7 @@ public class EggHatchOnClick : MonoBehaviour
         _full.SetActive(false);
         _damaged.SetActive(true);
         _particleSystem.Play();
+        isDestroyed = true; 
 
         StartCoroutine(DestroyDamagedAfterDelay());
     }
@@ -39,7 +46,7 @@ public class EggHatchOnClick : MonoBehaviour
     {
         if (antPrefab != null)
         {
-            GameObject ant = Instantiate(antPrefab, transform.position, Quaternion.identity);
+            Instantiate(antPrefab, transform.position, Quaternion.identity);
         }
     }
 }

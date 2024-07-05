@@ -1302,10 +1302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc60095b1c2d424a8ea88244ae4660d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heartEffectPrefab: {fileID: 0}
-  accelerationFactor: 0.9
-  acceleratedGenerationInterval: 5
-  accelerationDuration: 5
+  heartEffectPrefab: {fileID: 5531743186368104068, guid: d7c8d51f50c01ab43891c135dacf139f,
+    type: 3}
 --- !u!1 &7645148363993045144
 GameObject:
   m_ObjectHideFlags: 0

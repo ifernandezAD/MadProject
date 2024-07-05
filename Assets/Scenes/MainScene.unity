@@ -123,6 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &627077824 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 473158499378085677, guid: 02764d2093a9f554a87be696acb6fd96,
+    type: 3}
+  m_PrefabInstance: {fileID: 7166940633238891653}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1232267139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -186,6 +192,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Queen
       objectReference: {fileID: 0}
+    - target: {fileID: 7565017915160089424, guid: bd78947ad21e2cb4ab5ef509b776908e,
+        type: 3}
+      propertyPath: eggPrefab
+      value: 
+      objectReference: {fileID: 9185082196655844167, guid: 2023d5cce5654ed4593f571210ebdd64,
+        type: 3}
+    - target: {fileID: 7565017915160089424, guid: bd78947ad21e2cb4ab5ef509b776908e,
+        type: 3}
+      propertyPath: spawnAreaCenter
+      value: 
+      objectReference: {fileID: 627077824}
     - target: {fileID: 7565017915160089424, guid: bd78947ad21e2cb4ab5ef509b776908e,
         type: 3}
       propertyPath: heartEffectPrefab
