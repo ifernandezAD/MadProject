@@ -21,7 +21,7 @@ public class WorkerAnt : MonoBehaviour
         storageArea = GameManager.instance.storageArea;
         resourcesContainer = GameManager.instance.resourcesContainer;
         agent = GetComponent<NavMeshAgent>();
-        animator=GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -41,7 +41,7 @@ public class WorkerAnt : MonoBehaviour
 
     void UpdateAnimation()
     {
-       if (agent.velocity.magnitude > 0.1f)
+        if (agent.velocity.magnitude > 0.1f)
         {
             animator.SetBool("isWalking", true);
         }
@@ -76,7 +76,17 @@ public class WorkerAnt : MonoBehaviour
             {
                 onResourceCollected?.Invoke();
                 Destroy(targetResource);
-                targetResource = null;  
+                targetResource = null;
+            }
+        }
+
+        if (other.gameObject.CompareTag("Fungus"))
+        {
+            if (targetResource != null && other.gameObject == targetResource)
+            {
+                Debug.Log("Has cogido la seta chunga");
+                Destroy(targetResource);
+                targetResource = null;
             }
         }
     }
