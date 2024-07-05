@@ -26,10 +26,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] int victoryResourceCount = 10;
 
     [Header("Game Settings")]
-    [SerializeField] float phaseDuration = 60.0f; // Duración de cada fase en segundos
+    [SerializeField] float phaseDuration = 60.0f;
 
     private GamePhase currentPhase = GamePhase.Phase1;
-    private float phaseTimer = 0.0f;
+
+    [Header("Resource Spawning")]
+    private float resourceSpawnInterval;
+    private Coroutine resourceSpawnCoroutine;
 
     void Awake()
     {
@@ -39,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        SetPhase(GamePhase.Phase1);
         StartCoroutine(PhaseTimer());
     }
 
@@ -68,42 +72,77 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(phaseDuration);
+            AdvancePhase();
+        }
+    }
 
-            // Avanzar a la siguiente fase
-            switch (currentPhase)
-            {
-                case GamePhase.Phase1:
-                    Debug.Log("Entering Phase 2");
-                    // Lógica para la transición a la fase 2
-                    break;
-                case GamePhase.Phase2:
-                    Debug.Log("Entering Phase 3");
-                    // Lógica para la transición a la fase 3
-                    break;
-                case GamePhase.Phase3:
-                    Debug.Log("Entering Phase 4");
-                    // Lógica para la transición a la fase 4
-                    break;
-                case GamePhase.Phase4:
-                    Debug.Log("Entering Phase 5");
-                    // Lógica para la transición a la fase 5
-                    break;
-                case GamePhase.Phase5:
-                    Debug.Log("Game Over - All phases completed.");
-                    // Lógica para finalizar el juego, por ejemplo, pantalla de fin de juego.
-                    break;
-                default:
-                    break;
-            }
+    void AdvancePhase()
+    {
+        switch (currentPhase)
+        {
+            case GamePhase.Phase1:
+                Debug.Log("Entering Phase 2");
+                SetPhase(GamePhase.Phase2);
+                break;
+            case GamePhase.Phase2:
+                Debug.Log("Entering Phase 3");
+                SetPhase(GamePhase.Phase3);
+                break;
+            case GamePhase.Phase3:
+                Debug.Log("Entering Phase 4");
+                SetPhase(GamePhase.Phase4);
+                break;
+            case GamePhase.Phase4:
+                Debug.Log("Entering Phase 5");
+                SetPhase(GamePhase.Phase5);
+                break;
+            case GamePhase.Phase5:
+                Debug.Log("Remaining in Phase 5");
+                break;
+            default:
+                break;
+        }
+    }
 
-            currentPhase++;
+    void SetPhase(GamePhase phase)
+    {
+        currentPhase = phase;
 
-            if (currentPhase > GamePhase.Phase5)
-            {
-                // Finalizar el juego si todas las fases han sido completadas
-                WinGame();
-                yield break;
-            }
+        if (resourceSpawnCoroutine != null)
+        {
+            StopCoroutine(resourceSpawnCoroutine);
+        }
+
+        switch (phase)
+        {
+            case GamePhase.Phase1:
+                resourceSpawnInterval = 5f;
+                break;
+            case GamePhase.Phase2:
+                resourceSpawnInterval = 4f;
+                break;
+            case GamePhase.Phase3:
+                resourceSpawnInterval = 3f;
+                break;
+            case GamePhase.Phase4:
+                resourceSpawnInterval = 2f;
+                break;
+            case GamePhase.Phase5:
+                resourceSpawnInterval = 1.0f;
+                break;
+            default:
+                break;
+        }
+
+        resourceSpawnCoroutine = StartCoroutine(SpawnResources());
+    }
+
+    IEnumerator SpawnResources()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(resourceSpawnInterval);
+            Spawner.instance.SpawnResource();
         }
     }
 }

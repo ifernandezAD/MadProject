@@ -210,6 +210,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bound
       objectReference: {fileID: 0}
+    - target: {fileID: 473158499378085677, guid: 02764d2093a9f554a87be696acb6fd96,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 473158499378085677, guid: 02764d2093a9f554a87be696acb6fd96,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 53
+      objectReference: {fileID: 0}
+    - target: {fileID: 739155953233420944, guid: 02764d2093a9f554a87be696acb6fd96,
+        type: 3}
+      propertyPath: phaseDuration
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 739155953233420944, guid: 02764d2093a9f554a87be696acb6fd96,
         type: 3}
       propertyPath: storageResourcePrefabs.Array.size
@@ -262,7 +277,7 @@ PrefabInstance:
     - target: {fileID: 4973703633403626303, guid: 02764d2093a9f554a87be696acb6fd96,
         type: 3}
       propertyPath: queenAreaRadius
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4973703633403626303, guid: 02764d2093a9f554a87be696acb6fd96,
         type: 3}
@@ -293,6 +308,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7615502971242890640, guid: fb30a2be4427cc8439a3dae915a9323f,
         type: 3}
+    - target: {fileID: 5402298978603702890, guid: 02764d2093a9f554a87be696acb6fd96,
+        type: 3}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6694779247393659543, guid: 02764d2093a9f554a87be696acb6fd96,
         type: 3}
       propertyPath: m_LocalScale.x

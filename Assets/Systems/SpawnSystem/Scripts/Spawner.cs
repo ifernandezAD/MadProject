@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {   
+    public static Spawner instance { get; private set; }
+
     [Header("References")]
     [SerializeField] Terrain terrain; 
     [SerializeField] GameObject[] resourcePrefabs; 
@@ -29,6 +31,11 @@ public class Spawner : MonoBehaviour
             SpawnResource();
             testingSpawnResource=false;
         }
+    }
+
+    void Awake()
+    {
+        instance =this;
     }
 
     public void SpawnResource()
