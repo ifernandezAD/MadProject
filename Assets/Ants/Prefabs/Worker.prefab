@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 6157232111103111206}
   m_Layer: 6
   m_Name: Worker
-  m_TagString: Untagged
+  m_TagString: WorkerAnt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -372,7 +372,6 @@ MonoBehaviour:
   targetResource: {fileID: 0}
   zombieAntPrefab: {fileID: 2685767143182550755, guid: 7372f610126e72547b51cdca0a5c0809,
     type: 3}
-  zombieAntContainer: {fileID: 0}
 --- !u!95 &4771032002400260143
 Animator:
   serializedVersion: 5

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Resource
   - Fungus
+  - WorkerAnt
+  - ZombieAnt
   layers:
   - Default
   - TransparentFX
