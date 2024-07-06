@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine.AI;
 
 public class ZombieAnt : MonoBehaviour
 {
+    public static Action onNoWorkerAntsLeft;
     private NavMeshAgent agent;
     private Animator animator;
     private Transform workerAntContainer; 
@@ -44,12 +46,13 @@ public class ZombieAnt : MonoBehaviour
 
         if (workerAnts.Length > 0)
         {
-            int randomIndex = Random.Range(0, workerAnts.Length);
+            int randomIndex = UnityEngine.Random.Range(0, workerAnts.Length);
             targetWorkerAnt = workerAnts[randomIndex].gameObject;
         }
         else
         {
             agent.SetDestination(transform.position);  
+            onNoWorkerAntsLeft?.Invoke();
         }
     }
 

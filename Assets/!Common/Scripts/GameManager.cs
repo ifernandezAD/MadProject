@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public enum GamePhase
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Transform resourcesContainer;
     [SerializeField] public Transform workAntsContainer;
     [SerializeField] public Transform zombiesAntContainer;
+    [SerializeField] TextMeshProUGUI feedbackText;
 
     [Header("Resource Related")]
     [SerializeField] GameObject[] storageResourcePrefabs;
@@ -39,11 +41,19 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        WorkerAnt.onResourceCollected += IncrementResourceCount;
     }
+
+    void OnEnable()
+    {
+        WorkerAnt.onResourceCollected += IncrementResourceCount;
+        ZombieAnt.onNoWorkerAntsLeft+=GameOver;
+    }
+
 
     void Start()
     {
+        feedbackText.gameObject.SetActive(false);
+
         SetPhase(GamePhase.Phase1);
         StartCoroutine(PhaseTimer());
     }
@@ -65,8 +75,8 @@ public class GameManager : MonoBehaviour
 
     void WinGame()
     {
-        Debug.Log("Victory! You've collected enough resources.");
-        // Aquí va la pantalla/mensaje de victoria. Por ejemplo, cartel de victoria y botón de replay.
+        feedbackText.gameObject.SetActive(true);
+        feedbackText.text = "VICTORIA";
     }
 
     IEnumerator PhaseTimer()
@@ -148,8 +158,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-        public GamePhase GetCurrentPhase()
+    public GamePhase GetCurrentPhase()
     {
         return currentPhase;
+    }
+
+    
+    private void GameOver()
+    {
+        feedbackText.gameObject.SetActive(true);
+        feedbackText.text = "DERROTA :(";
+    }
+
+    void OnDisable()
+    {
+        WorkerAnt.onResourceCollected -= IncrementResourceCount;
+        ZombieAnt.onNoWorkerAntsLeft-=GameOver;
     }
 }
