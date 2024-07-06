@@ -11,6 +11,7 @@ public class WorkerAnt : MonoBehaviour
     private Transform resourcesContainer;
     private NavMeshAgent agent;
     private Animator animator;
+    private Rigidbody rb;
 
     [Header("Zombie Ant")]
     [SerializeField] private GameObject zombieAntPrefab; 
@@ -24,6 +25,7 @@ public class WorkerAnt : MonoBehaviour
 
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -52,10 +54,12 @@ public class WorkerAnt : MonoBehaviour
         {
             int randomIndex = UnityEngine.Random.Range(0, resourcesContainer.childCount);
             targetResource = resourcesContainer.GetChild(randomIndex).gameObject;
+            rb.isKinematic=false;
         }
         else
         {
             agent.SetDestination(transform.position);
+            rb.isKinematic=true;
         }
     }
 

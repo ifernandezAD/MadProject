@@ -9,6 +9,7 @@ public class ZombieAnt : MonoBehaviour
     public static Action onNoWorkerAntsLeft;
     private NavMeshAgent agent;
     private Animator animator;
+    private Rigidbody rb;
     private Transform workerAntContainer; 
 
     private GameObject targetWorkerAnt;
@@ -17,6 +18,7 @@ public class ZombieAnt : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        rb=GetComponent<Rigidbody>();
         workerAntContainer = GameManager.instance.workAntsContainer;
     }
 
@@ -46,12 +48,14 @@ public class ZombieAnt : MonoBehaviour
 
         if (workerAnts.Length > 0)
         {
+            rb.isKinematic=false;
             int randomIndex = UnityEngine.Random.Range(0, workerAnts.Length);
             targetWorkerAnt = workerAnts[randomIndex].gameObject;
         }
         else
         {
             agent.SetDestination(transform.position);  
+            rb.isKinematic=true;
             onNoWorkerAntsLeft?.Invoke();
         }
     }
