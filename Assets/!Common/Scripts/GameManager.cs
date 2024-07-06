@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Transform resourcesContainer;
     [SerializeField] public Transform workAntsContainer;
     [SerializeField] public Transform zombiesAntContainer;
+    [SerializeField] public Transform copAntContainer;
     [SerializeField] TextMeshProUGUI feedbackText;
 
     [Header("Resource Related")]
