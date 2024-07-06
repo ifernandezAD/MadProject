@@ -9,23 +9,42 @@ public class QueenController : MonoBehaviour
 
     [Header("Breeding")]
     [SerializeField] GameObject heartEffectPrefab;
-
-    [Header("Testing")]
-    public bool testingEggSpawn;
-
-    void OnValidate()
+    [SerializeField] float heartEffectInterval = 1.0f;
+    [SerializeField] float eggSpawnInterval = 0.5f;
+    private bool isMouseHeld = false;
+    private float heartEffectTimer = 0f;
+    private float eggSpawnTimer = 0f;
+    void Update()
     {
-        if (testingEggSpawn)
+        if (isMouseHeld)
         {
-            TrySpawnEgg();
-            testingEggSpawn = false;
+            heartEffectTimer += Time.deltaTime;
+            eggSpawnTimer += Time.deltaTime;
+
+            if (heartEffectTimer >= heartEffectInterval)
+            {
+                ShowHeartEffect();
+                heartEffectTimer = 0f;
+            }
+
+            if (eggSpawnTimer >= eggSpawnInterval)
+            {
+                TrySpawnEgg();
+                eggSpawnTimer = 0f;
+            }
         }
     }
 
     void OnMouseDown()
     {
-        ShowHeartEffect();
-        TrySpawnEgg();
+        isMouseHeld = true;
+    }
+
+    void OnMouseUp()
+    {
+        isMouseHeld = false;
+        heartEffectTimer = 0f;
+        eggSpawnTimer = 0f;
     }
 
     void ShowHeartEffect()
@@ -85,15 +104,15 @@ public class QueenController : MonoBehaviour
         switch (currentPhase)
         {
             case GamePhase.Phase1:
-                return 0.05f;  
+                return 0.05f;
             case GamePhase.Phase2:
-                return 0.1f; 
+                return 0.1f;
             case GamePhase.Phase3:
-                return 0.2f; 
+                return 0.2f;
             case GamePhase.Phase4:
-                return 0.4f; 
+                return 0.4f;
             case GamePhase.Phase5:
-                return 0.5f; 
+                return 0.5f;
             default:
                 return 0.0f;
         }
