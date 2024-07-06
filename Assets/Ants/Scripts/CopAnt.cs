@@ -8,6 +8,7 @@ public class CopAnt : MonoBehaviour
     private Transform zombieAntContainer;
     private NavMeshAgent agent;
     private Animator animator;
+    private Rigidbody rb;
     private GameObject targetZombieAnt;
 
     void Awake()
@@ -15,6 +16,7 @@ public class CopAnt : MonoBehaviour
         zombieAntContainer = GameManager.instance.zombiesAntContainer;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        rb=GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -41,12 +43,14 @@ public class CopAnt : MonoBehaviour
     {
         if (zombieAntContainer != null && zombieAntContainer.childCount > 0)
         {
+            rb.isKinematic=false;
             int randomIndex = Random.Range(0, zombieAntContainer.childCount);
             targetZombieAnt = zombieAntContainer.GetChild(randomIndex).gameObject;
         }
         else
         {
             agent.SetDestination(transform.position);
+            rb.isKinematic=true;
         }
     }
 

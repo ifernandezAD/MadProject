@@ -2259,8 +2259,14 @@ PrefabInstance:
     - target: {fileID: 739155953233420944, guid: 02764d2093a9f554a87be696acb6fd96,
         type: 3}
       propertyPath: victoryResourceCount
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 739155953233420944, guid: 02764d2093a9f554a87be696acb6fd96,
+        type: 3}
+      propertyPath: storageResourcePrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 2776474626661073279, guid: 818efd8008c6bc24e8a8e67b20109522,
+        type: 3}
     - target: {fileID: 4209655367351321693, guid: 02764d2093a9f554a87be696acb6fd96,
         type: 3}
       propertyPath: m_Name
@@ -2271,6 +2277,12 @@ PrefabInstance:
       propertyPath: resourcePrefabs.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4973703633403626303, guid: 02764d2093a9f554a87be696acb6fd96,
+        type: 3}
+      propertyPath: resourcePrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 7615502971242890640, guid: e2820dea9b5d8f241b1d3929f4d6ff36,
+        type: 3}
     - target: {fileID: 4973703633403626303, guid: 02764d2093a9f554a87be696acb6fd96,
         type: 3}
       propertyPath: resourcePrefabs.Array.data[3]

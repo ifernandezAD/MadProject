@@ -129,19 +129,19 @@ public class GameManager : MonoBehaviour
         switch (phase)
         {
             case GamePhase.Phase1:
-                resourceSpawnInterval = 5f;
-                break;
-            case GamePhase.Phase2:
                 resourceSpawnInterval = 4f;
                 break;
-            case GamePhase.Phase3:
+            case GamePhase.Phase2:
                 resourceSpawnInterval = 3f;
                 break;
-            case GamePhase.Phase4:
+            case GamePhase.Phase3:
                 resourceSpawnInterval = 2f;
                 break;
+            case GamePhase.Phase4:
+                resourceSpawnInterval = 1f;
+                break;
             case GamePhase.Phase5:
-                resourceSpawnInterval = 1.0f;
+                resourceSpawnInterval = 0.5f;
                 break;
             default:
                 break;
