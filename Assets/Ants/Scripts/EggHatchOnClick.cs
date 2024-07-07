@@ -12,15 +12,20 @@ public class EggHatchOnClick : MonoBehaviour
 
     private bool isDestroyed = false; 
 
+    [SerializeField] AudioClip clickSound;
+    private AudioSource audioSource;
+
     void Awake()
     {
         workAntsContainer = GameManager.instance.workAntsContainer;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnMouseDown()
     {
         if (!isDestroyed)
         {
+            PlayClickSound();
             DestroyEgg();
         }
     }
@@ -56,6 +61,14 @@ public class EggHatchOnClick : MonoBehaviour
         {
             GameObject ant = Instantiate(antPrefab, transform.position, Quaternion.identity);
             ant.transform.SetParent(workAntsContainer);
+        }
+    }
+
+        void PlayClickSound()
+    {
+        if (clickSound != null)
+        {
+            audioSource.PlayOneShot(clickSound);  
         }
     }
 }

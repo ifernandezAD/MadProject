@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum GamePhase
@@ -39,6 +40,10 @@ public class GameManager : MonoBehaviour
     [Header("Resource Spawning")]
     private float resourceSpawnInterval;
     private Coroutine resourceSpawnCoroutine;
+
+    [Header("Victory")]
+    [SerializeField] GameObject victoryVfxContainer;
+    [SerializeField] GameObject audioManager;
 
     void Awake()
     {
@@ -79,6 +84,7 @@ public class GameManager : MonoBehaviour
     {
         feedbackText.gameObject.SetActive(true);
         feedbackText.text = "VICTORIA";
+        EnableVictoryVfx();
         restartButton.SetActive(true);
     }
 
@@ -172,6 +178,12 @@ public class GameManager : MonoBehaviour
         feedbackText.gameObject.SetActive(true);
         feedbackText.text = "DERROTA :(";
         restartButton.SetActive(true);
+    }
+
+    private void EnableVictoryVfx()
+    {
+        victoryVfxContainer.SetActive(true);
+        audioManager.SetActive(false);
     }
 
     void OnDisable()
