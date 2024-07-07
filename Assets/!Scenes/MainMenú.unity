@@ -1297,7 +1297,7 @@ PrefabInstance:
     - target: {fileID: 1938206837951940299, guid: 13958eb9c542411438fa45bb68d6134c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2497255345026184087, guid: 13958eb9c542411438fa45bb68d6134c,
         type: 3}
@@ -1373,7 +1373,9 @@ PrefabInstance:
     - target: {fileID: 6658965978719032299, guid: 13958eb9c542411438fa45bb68d6134c,
         type: 3}
       propertyPath: subtitles.Array.data[6]
-      value: 6
+      value: When a worker ant eats a madness fungus, it becomes infected and will
+        spread the infection to other ants. If the infection spreads to the entire
+        colony, you lose the game.
       objectReference: {fileID: 0}
     - target: {fileID: 6658965978719032299, guid: 13958eb9c542411438fa45bb68d6134c,
         type: 3}
@@ -1831,12 +1833,12 @@ GameObject:
   - component: {fileID: 1870074961}
   - component: {fileID: 1870074960}
   m_Layer: 5
-  m_Name: Image (7)
+  m_Name: MadAnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1870074959
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1876,7 +1878,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ad4443f13f03e3144bb83e86ec58cb3a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d0724b212d8d9c2459072ae2e0601ad9, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
