@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Transform workAntsContainer;
     [SerializeField] public Transform zombiesAntContainer;
     [SerializeField] public Transform copAntContainer;
-    [SerializeField] TextMeshProUGUI feedbackText;
+    [SerializeField] TextMeshProUGUI victoryText;
+    [SerializeField] TextMeshProUGUI madnessText;
     [SerializeField] GameObject restartButton;
 
     [Header("Resource Related")]
@@ -45,6 +46,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject victoryVfxContainer;
     [SerializeField] GameObject audioManager;
 
+    [Header("Madness")]
+    [SerializeField] GameObject madnessVolume;
+    
+
     void Awake()
     {
         instance = this;
@@ -59,7 +64,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        feedbackText.gameObject.SetActive(false);
+        victoryText.gameObject.SetActive(false);
+        madnessText.gameObject.SetActive(false);
 
         SetPhase(GamePhase.Phase1);
         StartCoroutine(PhaseTimer());
@@ -82,8 +88,7 @@ public class GameManager : MonoBehaviour
 
     void WinGame()
     {
-        feedbackText.gameObject.SetActive(true);
-        feedbackText.text = "VICTORIA";
+        victoryText.gameObject.SetActive(true);       
         EnableVictoryVfx();
         restartButton.SetActive(true);
     }
@@ -175,14 +180,21 @@ public class GameManager : MonoBehaviour
     
     private void GameOver()
     {
-        feedbackText.gameObject.SetActive(true);
-        feedbackText.text = "DERROTA :(";
+        madnessText.gameObject.SetActive(true);
+        EnableMadnessVfx();
+        
         restartButton.SetActive(true);
     }
 
     private void EnableVictoryVfx()
     {
         victoryVfxContainer.SetActive(true);
+        audioManager.SetActive(false);
+    }
+
+        private void EnableMadnessVfx()
+    {
+        madnessVolume.SetActive(true);
         audioManager.SetActive(false);
     }
 
