@@ -1961,32 +1961,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2769770476842758074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7156966023053379797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeb624addd8dd7649893a9eb9dc114ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  terrain: {fileID: 163893535875621333}
-  resourcePrefabs:
-  - {fileID: 7615502971242890640, guid: 161d52532b5b70f42898d8548ac53408, type: 3}
-  - {fileID: 7615502971242890640, guid: ab6063abd7779f6429ce121764c73118, type: 3}
-  - {fileID: 7615502971242890640, guid: e2820dea9b5d8f241b1d3929f4d6ff36, type: 3}
-  - {fileID: 7787694257897112110, guid: acf8b5350a04dd246a216a18416f9000, type: 3}
-  spawnerContainer: {fileID: 0}
-  maxSpawnHeight: 10
-  spawnYOffset: 10
-  storageAreaTransform: {fileID: 0}
-  storageAreaRadius: 300
-  queenAreaTransform: {fileID: 0}
-  queenAreaRadius: 300
-  testingSpawnResource: 0
 --- !u!4 &2853414625137548773
 Transform:
   m_ObjectHideFlags: 0
@@ -3187,15 +3161,26 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4325577772828608188}
-  - component: {fileID: 7580707046292688405}
-  - component: {fileID: 2769770476842758074}
+  - component: {fileID: 7156966023053379798}
   m_Layer: 0
   m_Name: GameLogic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
+--- !u!114 &7156966023053379798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7156966023053379797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25793f01fda39843b6405e1f7ba329d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7277812094771014434
 Transform:
   m_ObjectHideFlags: 0
@@ -3273,31 +3258,6 @@ Transform:
   - {fileID: 3689691449129462191}
   m_Father: {fileID: 6315473418062490240}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7580707046292688405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7156966023053379797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a304bf395c3060e439f3311c7803bd48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  storageArea: {fileID: 0}
-  resourcesContainer: {fileID: 0}
-  workAntsContainer: {fileID: 0}
-  zombiesAntContainer: {fileID: 0}
-  copAntContainer: {fileID: 0}
-  feedbackText: {fileID: 0}
-  storageResourcePrefabs:
-  - {fileID: 7239548348016222390, guid: 091356b97dcbd8443962d11f8120bb9e, type: 3}
-  - {fileID: 9152073641914881136, guid: ca066059ec32641418a1761f3c1c4c25, type: 3}
-  - {fileID: 2776474626661073279, guid: 818efd8008c6bc24e8a8e67b20109522, type: 3}
-  resourceCount: 0
-  victoryResourceCount: 200
-  phaseDuration: 30
 --- !u!4 &7593756236230641936
 Transform:
   m_ObjectHideFlags: 0

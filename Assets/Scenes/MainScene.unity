@@ -2641,6 +2641,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 739155953233420944, guid: 02764d2093a9f554a87be696acb6fd96,
         type: 3}
+      propertyPath: restartButton
+      value: 
+      objectReference: {fileID: 6513525755370607943}
+    - target: {fileID: 739155953233420944, guid: 02764d2093a9f554a87be696acb6fd96,
+        type: 3}
       propertyPath: copAntContainer
       value: 
       objectReference: {fileID: 1432960339}
@@ -2754,8 +2759,30 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 498453397}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 10326773919605840, guid: 02764d2093a9f554a87be696acb6fd96,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7166940633238891655}
   m_SourcePrefab: {fileID: 100100000, guid: 02764d2093a9f554a87be696acb6fd96, type: 3}
+--- !u!1 &7166940633238891654 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 10326773919605840, guid: 02764d2093a9f554a87be696acb6fd96,
+    type: 3}
+  m_PrefabInstance: {fileID: 7166940633238891653}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7166940633238891655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7166940633238891654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25793f01fda39843b6405e1f7ba329d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &7414608780534144466
 CanvasRenderer:
   m_ObjectHideFlags: 0

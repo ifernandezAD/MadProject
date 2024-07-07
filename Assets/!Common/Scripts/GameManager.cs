@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour
     {
         feedbackText.gameObject.SetActive(true);
         feedbackText.text = "DERROTA :(";
-        restartButton.SetActive(false);
+        restartButton.SetActive(true);
     }
 
     void OnDisable()
