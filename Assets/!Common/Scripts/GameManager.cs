@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Transform zombiesAntContainer;
     [SerializeField] public Transform copAntContainer;
     [SerializeField] TextMeshProUGUI feedbackText;
+    [SerializeField] GameObject restartButton;
 
     [Header("Resource Related")]
     [SerializeField] GameObject[] storageResourcePrefabs;
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
     {
         feedbackText.gameObject.SetActive(true);
         feedbackText.text = "VICTORIA";
+        restartButton.SetActive(true);
     }
 
     IEnumerator PhaseTimer()
@@ -169,6 +171,7 @@ public class GameManager : MonoBehaviour
     {
         feedbackText.gameObject.SetActive(true);
         feedbackText.text = "DERROTA :(";
+        restartButton.SetActive(false);
     }
 
     void OnDisable()

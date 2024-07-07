@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
-[Header("Tutorial Images")]
+    [Header("Tutorial Images")]
     [SerializeField] private Transform imageContainer; 
     [SerializeField] private TextMeshProUGUI subtitleText; 
     [SerializeField] private string[] subtitles; 
@@ -16,11 +16,10 @@ public class TutorialManager : MonoBehaviour
     {
         if (imageContainer.childCount != subtitles.Length)
         {
-            Debug.LogError("Number of images and subtitles do not match!");
+            Debug.LogError("Number of images and subtitles do not match");
             return;
         }
 
-        // Initialize the tutorial
         ShowCurrentImageAndSubtitle();
     }
 
@@ -34,25 +33,20 @@ public class TutorialManager : MonoBehaviour
 
     void ShowCurrentImageAndSubtitle()
     {
- 
         for (int i = 0; i < imageContainer.childCount; i++)
         {
             imageContainer.GetChild(i).gameObject.SetActive(false);
         }
 
-        
         imageContainer.GetChild(currentIndex).gameObject.SetActive(true);
 
-        
         subtitleText.text = subtitles[currentIndex];
     }
 
     void AdvanceTutorial()
     {
-        
         currentIndex++;
 
-        
         if (currentIndex >= imageContainer.childCount)
         {
             EndTutorial();
@@ -65,7 +59,6 @@ public class TutorialManager : MonoBehaviour
 
     void EndTutorial()
     {
-        
         for (int i = 0; i < imageContainer.childCount; i++)
         {
             imageContainer.GetChild(i).gameObject.SetActive(false);
@@ -73,7 +66,20 @@ public class TutorialManager : MonoBehaviour
 
         subtitleText.gameObject.SetActive(false);
 
-        
-        Debug.Log("Tutorial finished!");
+        gameObject.SetActive(false);
+
+        Debug.Log("Tutorial finished");
+    }
+
+    public void RestartTutorial()
+    {
+        currentIndex = 0;
+        subtitleText.gameObject.SetActive(true);
+        ShowCurrentImageAndSubtitle();
+    }
+
+    void OnEnable()
+    {
+        RestartTutorial();
     }
 }
